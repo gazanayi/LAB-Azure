@@ -1,0 +1,17 @@
+- name: Create Azure VM
+  tasks:
+  - name: Create VM
+    azure_rm_virtualmachine:
+      resource_group: LAB-BUILD-INFRA
+      name: myVM
+      vm_size: Standard_DS1_v2
+      admin_username: mounir
+      ssh_password_enabled: false
+      ssh_public_keys: 
+        - path: /home/mounir/.ssh/id_rsa
+          key_data: "ssh-rsa AAAAB3Nz{snip}hwhqT9h"
+      image:
+        offer: CentOS
+        publisher: OpenLogic
+        sku: '7.3'
+        version: latest
